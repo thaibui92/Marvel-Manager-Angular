@@ -1,0 +1,18 @@
+<div *ngIf="model.length>0" infinite-scroll (scrolled)="onScrollDown()">
+  <h3>All Marvels</h3>
+  <table class="list-characters">
+    <tr>
+      <th>Name</th>
+      <th colspan="2">Description</th>
+    </tr>
+    <!-- <tr *ngFor="let char of model | paginate: {itemsPerPage: limitItems, currentPage: p}"> -->
+    <tr *ngFor="let char of model">
+      <td class="name">{{char.name}}</td>
+      <td class="description">{{getLimitedString(char.description)}}</td>
+      <td class="thumbnail"> <img class="zoom" [src]="util.getImageUrl(char.thumbnail)" [alt]="char.name"
+          (click)="gotoDetail(char)">
+      </td>
+    </tr>
+  </table>
+  <!-- <pagination-controls (pageChange)="p=$event;" responsive="true" maxSize="9" previousLabel="Older" nextLabel="Newer" autoHide="true"></pagination-controls> -->
+</div>

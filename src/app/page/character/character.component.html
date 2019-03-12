@@ -1,0 +1,13 @@
+<div *ngIf="model">
+    <img [src]="util.getImageUrl(model.thumbnail)" [alt]="model.name" width="400" height="400">
+    <h2>{{model.name}}</h2>
+    <p>{{model.description}}</p>
+</div>
+<ul *ngIf="model && model.comics">
+    <li *ngFor="let com of model.comics">
+      <h3> {{com.title}}</h3>
+      <img [src]="util.getImageUrl(com.thumbnail)" [alt]="com.title" width="300" height="300">
+      <p>{{com.description}}</p>
+    </li>
+  </ul>
+<button (click)="goBack()">Back</button>
